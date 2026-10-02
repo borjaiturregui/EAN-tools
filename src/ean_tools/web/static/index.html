@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ean-tools</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>ean-tools</h1>
+  <p class="muted">Catálogo: <code id="catalog-path">…</code></p>
+  <p class="notice">Códigos de <strong>uso interno</strong> (prefijo 2xx): válidos para etiquetas, TPV y web propia.
+    No sirven para Amazon ni otros marketplaces.</p>
+</header>
+
+<main>
+  <div id="messages" role="status" aria-live="polite"></div>
+
+  <section>
+    <h2>1. Categorías</h2>
+    <label class="inline">Prefijo interno
+      <input id="prefix" maxlength="3" size="4" inputmode="numeric" title="200-299">
+    </label>
+    <table>
+      <thead><tr><th>Código (2 díg.)</th><th>Nombre</th><th></th></tr></thead>
+      <tbody id="categories"></tbody>
+    </table>
+    <button type="button" id="add-category">+ Añadir categoría</button>
+  </section>
+
+  <section>
+    <h2>2. Productos y variantes</h2>
+    <p class="muted">Un producto sin variantes recibe un solo código (variante 0000).
+      La etiqueta es el nombre corto que se usa en el archivo de imagen; si la dejas vacía se genera sola.</p>
+    <table>
+      <thead><tr><th>Categoría</th><th>Código (3 díg.)</th><th>Nombre</th><th>Etiqueta</th><th>Variantes (código 4 díg. · nombre · etiqueta)</th><th></th></tr></thead>
+      <tbody id="products"></tbody>
+    </table>
+    <button type="button" id="add-product">+ Añadir producto</button>
+  </section>
+
+  <section>
+    <h2>3. Generar</h2>
+    <div class="options">
+      <label>Ancho (mm) <input id="width" type="number" min="5" step="0.5" value="40"></label>
+      <label>Alto (mm) <input id="height" type="number" min="5" step="0.5" value="25"></label>
+      <label>DPI impresora
+        <input id="dpi" type="number" min="72" step="1" value="300" list="dpi-list">
+        <datalist id="dpi-list"><option value="203"><option value="300"><option value="600"></datalist>
+      </label>
+      <label class="inline"><input id="text" type="checkbox" checked> Mostrar dígitos</label>
+    </div>
+    <p id="layout-info" class="muted"></p>
+    <button type="button" id="generate" class="primary">Guardar y generar</button>
+    <span id="dirty" class="muted" hidden>Hay cambios sin guardar.</span>
+
+    <div id="downloads" hidden>
+      <h3>Descargas</h3>
+      <a id="dl-csv" class="button" href="/download/csv">Descargar CSV</a>
+      <a id="dl-zip" class="button" href="/download/zip">Descargar ZIP (CSV + imágenes)</a>
+      <table>
+        <thead><tr><th>EAN-13</th><th>Categoría</th><th>Producto</th><th>Variante</th><th>Etiqueta</th><th>Vista previa</th></tr></thead>
+        <tbody id="items"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<template id="variant-row">
+  <div class="variant">
+    <input class="v-code" maxlength="4" size="5" inputmode="numeric" placeholder="0001">
+    <input class="v-name" placeholder="Talla M">
+    <input class="v-label" placeholder="(auto)">
+    <button type="button" class="link danger" title="Quitar variante">✕</button>
+  </div>
+</template>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
