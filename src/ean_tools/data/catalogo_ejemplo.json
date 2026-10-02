@@ -1,0 +1,59 @@
+{
+  "format": 1,
+  "prefix": "200",
+  "categories": {
+    "01": "Calcetines",
+    "02": "Camisetas",
+    "03": "Gorras",
+    "04": "Accesorios"
+  },
+  "products": [
+    {
+      "category": "01",
+      "code": "001",
+      "name": "Calcetín corto",
+      "label": "CALC-CORTO",
+      "variants": []
+    },
+    {
+      "category": "01",
+      "code": "002",
+      "name": "Calcetín técnico",
+      "label": "CALC-TEC",
+      "variants": [
+        {"code": "0020", "name": "Talla 36-39", "label": "CALC-TEC-36"},
+        {"code": "0021", "name": "Talla 40-43", "label": "CALC-TEC-40"},
+        {"code": "0022", "name": "Talla 44-47", "label": "CALC-TEC-44"}
+      ]
+    },
+    {
+      "category": "02",
+      "code": "001",
+      "name": "Camiseta técnica",
+      "label": "CAMI-TEC",
+      "variants": [
+        {"code": "0002", "name": "Talla S", "label": "CAMI-TEC-S"},
+        {"code": "0003", "name": "Talla M", "label": "CAMI-TEC-M"},
+        {"code": "0004", "name": "Talla L", "label": "CAMI-TEC-L"},
+        {"code": "0005", "name": "Talla XL", "label": "CAMI-TEC-XL"}
+      ]
+    },
+    {
+      "category": "03",
+      "code": "001",
+      "name": "Gorra",
+      "label": "GORRA",
+      "variants": []
+    },
+    {
+      "category": "04",
+      "code": "001",
+      "name": "Bidón 750 ml",
+      "label": "BIDON",
+      "variants": [
+        {"code": "0101", "name": "Color negro", "label": "BIDON-NEGRO"},
+        {"code": "0102", "name": "Color blanco", "label": "BIDON-BLANCO"}
+      ]
+    }
+  ]
+}

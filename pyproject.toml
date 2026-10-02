@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ean-tools"
+dynamic = ["version"]
+description = "Genera y gestiona códigos EAN-13 de uso interno (prefijo 200-299): CSV, imágenes listas para imprimir, CLI y web local."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+dependencies = ["click>=8.1"]
+keywords = ["ean", "ean-13", "barcode", "gs1", "inventario", "etiquetas"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+    "Environment :: Web Environment",
+    "Natural Language :: Spanish",
+]
+
+[project.optional-dependencies]
+images = ["Pillow>=10.1"]
+web = ["Pillow>=10.1", "fastapi>=0.110", "uvicorn>=0.27"]
+dev = [
+    "ean-tools[web]",
+    "pytest>=8",
+    "httpx>=0.27",
+    "python-barcode>=0.15",
+    "zxing-cpp>=2.2",
+]
+
+[project.scripts]
+ean-tools = "ean_tools.cli:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "ean_tools.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+ean_tools = ["data/*.json", "web/static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

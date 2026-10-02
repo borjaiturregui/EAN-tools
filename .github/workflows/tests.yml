@@ -1,0 +1,42 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        python-version: ["3.11", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Instalar
+        run: python -m pip install -e ".[dev]"
+      - name: Tests
+        run: python -m pytest
+
+  core-only:
+    # La lógica y el CSV deben funcionar sin Pillow ni FastAPI.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar sin extras
+        run: python -m pip install -e . pytest
+      - name: Tests
+        run: python -m pytest
+      - name: CLI sin imágenes
+        run: |
+          ean-tools init catalogo.json
+          ean-tools generate --no-images
+          ean-tools validate 2000100100004

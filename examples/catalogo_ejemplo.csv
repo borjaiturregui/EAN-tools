@@ -1,0 +1,12 @@
+﻿categoria;nombre_categoria;producto;nombre_producto;etiqueta_producto;variante;nombre_variante;etiqueta_variante
+01;Calcetines;001;Calcetín corto;CALC-CORTO;;;
+01;Calcetines;002;Calcetín técnico;CALC-TEC;0020;Talla 36-39;CALC-TEC-36
+01;Calcetines;002;Calcetín técnico;CALC-TEC;0021;Talla 40-43;CALC-TEC-40
+01;Calcetines;002;Calcetín técnico;CALC-TEC;0022;Talla 44-47;CALC-TEC-44
+02;Camisetas;001;Camiseta técnica;CAMI-TEC;0002;Talla S;CAMI-TEC-S
+02;Camisetas;001;Camiseta técnica;CAMI-TEC;0003;Talla M;CAMI-TEC-M
+02;Camisetas;001;Camiseta técnica;CAMI-TEC;0004;Talla L;CAMI-TEC-L
+02;Camisetas;001;Camiseta técnica;CAMI-TEC;0005;Talla XL;CAMI-TEC-XL
+03;Gorras;001;Gorra;GORRA;;;
+04;Accesorios;001;Bidón 750 ml;BIDON;0101;Color negro;BIDON-NEGRO
+04;Accesorios;001;Bidón 750 ml;BIDON;0102;Color blanco;BIDON-BLANCO
